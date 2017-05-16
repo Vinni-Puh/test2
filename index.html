@@ -3,9 +3,57 @@
  <head>
   <meta charset="utf-8">
   <title>GIT project</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
  </head>
  <body>
+	<header id="header" class="">
+		
+	</header><!-- /header -->
 
+	<div class="wrapper-content">
+		<div id="sidebar" class="sidebar">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error nulla aliquid dolore at, quod hic sint expedita! Cupiditate, iste. Itaque!</p>
+		</div>
+		<div id="main" class="main-content"></div>
+	</div>
+
+	<script>
+		jQuery(document).ready(function () {
+
+		    var length = jQuery('#main').height() - jQuery('#sidebar').height() + jQuery('#main').offset().top;
+
+		    jQuery(window).scroll(function () {
+
+		        var scroll = jQuery(this).scrollTop();
+		        var height = jQuery('#sidebar').height() + 'px';
+
+		        if (scroll < jQuery('#main').offset().top) {
+
+		            jQuery('#sidebar').css({
+		                'position': 'absolute',
+		                'top': '0'
+		            });
+
+		        } else if (scroll > length) {
+
+		            jQuery('#sidebar').css({
+		                'position': 'absolute',
+		                'bottom': '0',
+		                'top': 'auto'
+		            });
+
+		        } else {
+
+		            jQuery('#sidebar').css({
+		                'position': 'fixed',
+		                'top': '0',
+		                'height': height
+		            });
+		        }
+		    });
+		});
+   
+	</script>
  </body>
 </html>
